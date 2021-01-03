@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spacehey CSS preview thingy</title>
+    <link rel="stylesheet" href="https://spacehey.com/css/my.css?v=0.5.3" />
+    <link
+      rel="stylesheet"
+      href="https://spacehey.com/css/important.css?v=0.3"
+    />
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+    <script>
+      window.addEventListener("DOMContentLoaded", (event) => {
+        const verifyUrl = (url) =>{
+          if (url != ""){
+            return url
+          }else{
+            return false
+          }
+        }
+        const immportBtn = document.getElementById("import-button");
+        const profileUrl = document.getElementById("profile-url");
+        immportBtn.onclick = async (e) => {
+          e.preventDefault();
+          const value = profileUrl.value;
+          const validUrl = verifyUrl(value);
+          console.log(validUrl);
+
+          if (validUrl) {
+            // get profile
+            const data = await fetch(validUrl, {
+              headers: {
+                accept:
+                  "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
+                "accept-language": "en-US,en;q=0.9",
+                "sec-fetch-dest": "document",
+                "sec-fetch-mode": "navigate",
+                "sec-fetch-site": "none",
+                "sec-fetch-user": "?1",
+                "upgrade-insecure-requests": "1",
+              },
+              referrerPolicy: "no-referrer-when-downgrade",
+              body: null,
+              method: "GET",
+              mode: "cors",
+              credentials: "omit",
+            });
+            console.log(data)
+          }
+        };
+
+        // Highlighter for classes
+        const spaceHeyClassList = document.querySelectorAll(".neo-class-names");
+        spaceHeyClassList.forEach((element) => {
+          element.onmouseover = function (e) {
+            console.log("test");
+          };
+
+          element.onmouseout = function (e) {
+            console.log("test2");
+          };
+        });
+      });
+    </script>
+
+    <nav class="neosite-nav">
+      <ul>
+        <li><a class="active" href="#home">Home</a></li>
+        <li><a href="#news">Tutorials</a></li>
+        <li><a href="#contact">Tools</a></li>
+        <li><a href="#about">About</a></li>
+        <li>
+          <button id="import-button">Import</button
+          ><input id="profile-url" type="text" />
+        </li>
+      </ul>
+    </nav>
+
+    <p>
+      Forked from
+      <a href="https://nein-mc.neocities.org/csstest/index.html">Nein Mc</a>.
+      Thank you for your work!
+    </p>
+    <p>VERY MUCH WIP!</p>
+
+    <p style="padding: 0 1em; margin: 0 auto">
+      Put anything (HTML, CSS) in the textarea below and it will get put into
+      the about section.
+    </p>
+
+    <div class="layout-wrapper">
+      <!-- EDITOR -->
+      <div class="editor-snippets-container">
+        <ul class="editor-toolbar">
+          <li class="toolbar-item"><button>About Me</button></li>
+          <li class="toolbar-item"><button>Meet</button></li>
+          <li class="toolbar-item"><button>General</button></li>
+          <li class="toolbar-item"><button>Music</button></li>
+          <li class="toolbar-item"><button>Movies</button></li>
+          <li class="toolbar-item"><button>Television</button></li>
+          <li class="toolbar-item"><button>Books</button></li>
+          <li class="toolbar-item"><button>Heroes</button></li>
+          <li class="toolbar-item">|</li>
+          <li class="toolbar-item"><button>Snippets</button></li>
+        </ul>
+        <div class="pane-container">
+          <div id="editor"></div>
+        </div>
+      </div>
+      <!-- EDITOR -->
+
+      <!-- CONTAINER FOR SPACEHEY PROFILE -->
+
+      <div class="container">
+        <nav>
+          <div class="top">
+            <div class="left">
+              <a href="https://spacehey.com/">
+                <img
+                  class="logo"
+                  src="/imgs/logo.svg"
+                  alt="SpaceHey.com"
+                />
+              </a>
+            </div>
+            <div class="center">
+              <form action="https://spacehey.com/search">
+                <!--<label for="web">The Web</label>
+                    <input type="radio" id="web" name="search_target" value="web">
+                    <label for="spacehey">SpaceHey</label>
+                    <input type="radio" id="spacehey" name="search_target" value="spacehey" checked>-->
+                <label for="q">Search Users:</label>
+                <div class="search-wrapper">
+                  <input id="q" type="text" name="q" autocomplete="off" />
+                </div>
+                <button typ="submit">Search</button>
+              </form>
+            </div>
+            <div class="right">
+              <a href="https://spacehey.com/soon">Help</a> |
+              <a href="https://spacehey.com/login">LogIn</a> |
+              <a href="https://spacehey.com/signup">SignUp</a>
+            </div>
+          </div>
+          <ul class="links">
+            <li><a href="https://spacehey.com/">Home</a></li>
+            <li><a href="https://spacehey.com/browse">Browse</a></li>
+            <li><a href="https://spacehey.com/search">Search</a></li>
+            <li><a href="https://blog.spacehey.com">Blog</a></li>
+            <li><a href="https://spacehey.com/bulletins">Bulletins</a></li>
+            <li>
+              <a href="https://forum.spacehey.com/"
+                >Forum
+                <img
+                  src="/imgs/new.png"
+                  class="icon"
+                  aria-hidden="true"
+                  loading="lazy"
+                  alt='"New" Icon'
+              /></a>
+            </li>
+            <li><a href="https://spacehey.com/favorites">Favorites</a></li>
+            <li><a href="https://spacehey.com/soon" class="soon">Invite</a></li>
+            <li><a href="https://spacehey.com/soon" class="soon">Mail</a></li>
+            <li><a href="https://spacehey.com/soon" class="soon">Groups</a></li>
+            <li><a href="https://spacehey.com/soon" class="soon">Events</a></li>
+            <li><a href="https://spacehey.com/soon" class="soon">Videos</a></li>
+            <li><a href="https://spacehey.com/about">About</a></li>
+          </ul>
+        </nav>
+        <main>
+          <div class="row profile">
+            <div class="col w-40 left">
+              <h1>Generic Profile</h1>
+              <div class="general-about">
+                <div class="profile-pic">
+                  <img
+                    src="/imgs/profile_pic.png"
+                    alt="profile picture"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="details">
+                  <p>
+                    Last Login: <br />
+                    <time class="ago">1608585033</time>
+                  </p>
+                </div>
+              </div>
+              <div class="mood">
+                <p><b>Mood:</b></p>
+                <p>
+                  <b
+                    >View my:
+                    <a href="https://blog.spacehey.com/user?id=6326">Blog</a>
+                    | <a href="/soon">Pics</a> | <a href="/soon">Videos</a></b
+                  >
+                </p>
+              </div>
+              <div class="contact">
+                <div class="heading">
+                  <h4>Contacting Generic Profile</h4>
+                </div>
+                <div class="inner">
+                  <div class="f-row">
+                    <div class="f-col">
+                      <a href="/addfriend?id=6326">
+                        <img
+                          src="/imgs/add.png"
+                          class="icon"
+                          aria-hidden="true"
+                          loading="lazy"
+                          alt='"Add" Icon'
+                        />
+                        Add to Friends
+                      </a>
+                    </div>
+                    <div class="f-col">
+                      <a href="/addfavorite?id=6326">
+                        <img
+                          src="/imgs/award_star_add.png"
+                          class="icon"
+                          aria-hidden="true"
+                          loading="lazy"
+                          alt='"Award_star_add" Icon'
+                        />
+                        Add to Favorites
+                      </a>
+                    </div>
+                  </div>
+                  <div class="f-row">
+                    <div class="f-col">
+                      <a href="/soon">
+                        <img
+                          src="/imgs/comment.png"
+                          class="icon"
+                          aria-hidden="true"
+                          loading="lazy"
+                          alt='"Comment" Icon'
+                        />
+                        Send Message
+                      </a>
+                    </div>
+                    <div class="f-col">
+                      <a href="/soon">
+                        <img
+                          src="/imgs/arrow_right.png"
+                          class="icon"
+                          aria-hidden="true"
+                          loading="lazy"
+                          alt='"Arrow_right" Icon'
+                        />
+                        Forward to Friend
+                      </a>
+                    </div>
+                  </div>
+                  <div class="f-row">
+                    <div class="f-col">
+                      <a href="/soon">
+                        <img
+                          src="/imgs/email.png"
+                          class="icon"
+                          aria-hidden="true"
+                          loading="lazy"
+                          alt='"Email" Icon'
+                        />
+                        Instant Message
+                      </a>
+                    </div>
+                    <div class="f-col">
+                      <a href="/block?id=6326">
+                        <img
+                          src="/imgs/exclamation.png"
+                          class="icon"
+                          aria-hidden="true"
+                          loading="lazy"
+                          alt='"Exclamation" Icon'
+                        />
+                        Block User
+                      </a>
+                    </div>
+                  </div>
+                  <div class="f-row">
+                    <div class="f-col">
+                      <a href="/soon">
+                        <img
+                          src="/imgs/group_add.png"
+                          class="icon"
+                          aria-hidden="true"
+                          loading="lazy"
+                          alt='"Group_add" Icon'
+                        />
+                        Add to Group
+                      </a>
+                    </div>
+                    <div class="f-col">
+                      <a href="/report?type=user&id=6326">
+                        <img
+                          src="/imgs/flag_red.png"
+                          class="icon"
+                          aria-hidden="true"
+                          loading="lazy"
+                          alt='"Flag_red" Icon'
+                        />
+                        Report User
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="url-info">
+                <p><b>SpaceHey URL:</b></p>
+                <p>https://spacehey.com/genericprofile</p>
+              </div>
+              <div class="table-section">
+                <div class="heading">
+                  <h4>Generic Profile's Interests</h4>
+                </div>
+                <div class="inner">
+                  <table class="details-table" cellspacing="3" cellpadding="3">
+                    <tbody>
+                      <tr>
+                        <td><p>General</p></td>
+                        <td><p></p></td>
+                      </tr>
+                      <tr>
+                        <td><p>Music</p></td>
+                        <td><p></p></td>
+                      </tr>
+                      <tr>
+                        <td><p>Movies</p></td>
+                        <td><p></p></td>
+                      </tr>
+                      <tr>
+                        <td><p>Television</p></td>
+                        <td><p></p></td>
+                      </tr>
+                      <tr>
+                        <td><p>Books</p></td>
+                        <td><p></p></td>
+                      </tr>
+                      <tr>
+                        <td><p>Heroes</p></td>
+                        <td><p></p></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="table-section">
+                <div class="heading">
+                  <h4>Generic Profile's Links</h4>
+                </div>
+                <div class="inner">
+                  <table class="details-table" cellspacing="3" cellpadding="3">
+                    <tbody></tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div class="col right">
+              <div class="blog-preview">
+                <h4>
+                  Generic Profile's Latest Blog Entries [<a
+                    href="https://blog.spacehey.com/user?id=6326"
+                    >View Blog</a
+                  >]
+                </h4>
+                <p><i>There are no Blog Entries yet.</i></p>
+              </div>
+              <div class="blurbs">
+                <div class="heading">
+                  <h4>Generic Profile's Blurbs</h4>
+                </div>
+                <div class="inner">
+                  <div class="section">
+                    <h4>About me:</h4>
+                    <p id="aboutgoeshere"></p>
+                  </div>
+                  <div class="section">
+                    <h4>Who I'd like to meet:</h4>
+                    <p></p>
+                  </div>
+                </div>
+              </div>
+              <div class="friends">
+                <div class="heading">
+                  <h4>Generic Profile's Friend Space</h4>
+                  <a class="more" href="/friends?id=6326">[view all]</a>
+                </div>
+                <div class="inner">
+                  <p>
+                    <b
+                      >Generic Profile has
+                      <span class="count">6</span> friends.</b
+                    >
+                  </p>
+                  <div class="friends-grid">
+                    <div class="person">
+                      <a href="/profile?id=2889">
+                        <p>☠ Eric ☠</p>
+                      </a>
+                      <a href="/profile?id=2889">
+                        <img
+                          src="/imgs/friend_1.jpg"
+                          alt="profile picture"
+                          loading="lazy"
+                        />
+                      </a>
+                    </div>
+                    <div class="person">
+                      <a href="/profile?id=6426">
+                        <p>Tom</p>
+                      </a>
+                      <a href="/profile?id=6426">
+                        <img
+                          src="/imgs/friend_2.jpg"
+                          alt="profile picture"
+                          loading="lazy"
+                        />
+                      </a>
+                    </div>
+                    <div class="person">
+                      <a href="/profile?id=6164">
+                        <p>Cyanmaster</p>
+                      </a>
+                      <a href="/profile?id=6164">
+                        <img
+                          src="/imgs/friend_3.png"
+                          alt="profile picture"
+                          loading="lazy"
+                        />
+                      </a>
+                    </div>
+                    <div class="person">
+                      <a href="/profile?id=2022">
+                        <p>Nole</p>
+                      </a>
+                      <a href="/profile?id=2022">
+                        <img
+                          src="/imgs/friend_4.jpg"
+                          alt="profile picture"
+                          loading="lazy"
+                        />
+                      </a>
+                    </div>
+                    <div class="person">
+                      <a href="/profile?id=1">
+                        <p>An</p>
+                      </a>
+                      <a href="/profile?id=1">
+                        <img
+                          src="/imgs/friend_5.png"
+                          alt="profile picture"
+                          loading="lazy"
+                        />
+                      </a>
+                    </div>
+                    <div class="person">
+                      <a href="/profile?id=2">
+                        <p>SpaceHey</p>
+                      </a>
+                      <a href="/profile?id=2">
+                        <img
+                          src="/imgs/friend_6.png"
+                          alt="profile picture"
+                          loading="lazy"
+                        />
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="friends" id="comments">
+                <div class="heading">
+                  <h4>Generic Profile's Friends Comments</h4>
+                </div>
+                <div class="inner">
+                  <p>
+                    <b>
+                      Displaying <span class="count">0</span> of
+                      <span class="count">0</span> comments (
+                      <a href="/comments?id=6326">View all</a> |
+                      <a href="/addcomment?id=6326">Add Comment</a> )
+                    </b>
+                  </p>
+                  <table
+                    class="comments-table"
+                    cellspacing="0"
+                    cellpadding="3"
+                    bordercolor="ffffff"
+                    border="1"
+                  >
+                    <tbody></tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+        <footer>
+          <p>
+            brought to you by
+            <a href="https://tibushlabs.de" target="_blank" rel="noopener"
+              >tibush labs</a
+            >.
+          </p>
+          <p>
+            <i
+              >Disclaimer: This is a fan-based project and intended for fun.
+              This site is not affiliated with MySpace&reg; in any way.</i
+            >
+          </p>
+          <ul class="links">
+            <li><a href="https://spacehey.com/about">About</a></li>
+            <li><a href="https://spacehey.com/faq">FAQ</a></li>
+            <li><a href="https://spacehey.com/news">News</a></li>
+            <li><a href="https://spacehey.com/rules">Rules</a></li>
+            <li><a href="https://spacehey.com/credits">Credits</a></li>
+            <li><a href="https://spacehey.com/press">Press</a></li>
+            <li><a href="https://spacehey.com/tos">Terms</a></li>
+            <li><a href="https://spacehey.com/privacy">Privacy</a></li>
+            <li><a href="https://tibushlabs.de/imprint">Imprint</a></li>
+            <li>
+              <a href="mailto:info@tibush.com?subject=SpaceHey.com"
+                >Contact SpaceHey</a
+              >
+            </li>
+            <li><a href="https://spacehey.com/soon">Safety Tips</a></li>
+            <li><a href="https://spacehey.com/soon">Advertise</a></li>
+            <li>
+              <a href="https://spacehey.com/shop"
+                >SpaceHey Shop
+                <img
+                  src="https://cdn.spacehey.com/icons/new.png?token=alOmXzi7HwSaMnGl8XH60WiuXgrw4ieVY5X0ZFZmJ3w&expires=1609195708"
+                  class="icon"
+                  aria-hidden="true"
+                  loading="lazy"
+                  alt='"New" Icon'
+              /></a>
+            </li>
+          </ul>
+          <p class="copyright">
+            <a href="https://spacehey.com/"
+              >&copy;2020 SpaceHey.com All Rights Reserved.</a
+            >
+          </p>
+        </footer>
+      </div>
+      <!-- CONTAINER FOR SPACEHEY PROFILE -->
+    </div>
+  </body>
+  <script src="./js/scripts.js"></script>
+  <script
+    src="https://pagecdn.io/lib/ace/1.4.12/ace.js"
+    crossorigin="anonymous"
+    integrity="sha256-Q9hnBpgBFstzZOr+OKFOWZWfcF5nFXO8Qz48Nmndo6U="
+  ></script>
+  <script
+    src="https://pagecdn.io/lib/ace/1.4.12/snippets/html.js"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://pagecdn.io/lib/ace/1.4.12/snippets/css.js"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://pagecdn.io/lib/ace/1.4.12/ext-language_tools.js"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://pagecdn.io/lib/ace/1.4.12/ext-emmet.js"
+    crossorigin="anonymous"
+  ></script>
+  <script>
+    function update_section(with_what, what) {
+      document.getElementById(what + "goeshere").innerHTML = with_what;
+    }
+
+    const loadCode = () => {
+      const storage = window.localStorage.getItem("code");
+      if (!storage) return null;
+      else return storage;
+    };
+    const defaultEditorValue = `
+<style>
+  .profile {
+      background-color: lightblue;
+  }
+</style>
+      `;
+    const editorValue = loadCode() || defaultEditorValue;
+    console.log(editorValue);
+
+    var editor = ace.edit("editor");
+    editor.setOption("enableEmmet", true);
+    editor.setTheme("ace/theme/monokai");
+    editor.session.setMode("ace/mode/html");
+    editor.setOptions({
+      enableBasicAutocompletion: true,
+      enableSnippets: true,
+      enableLiveAutocompletion: true,
+    });
+    editor.insert(editorValue);
+
+    update_section(editor.getValue(), "about");
+
+    editor.session.on("change", function (delta) {
+      // delta.start, delta.end, delta.lines, delta.action
+      console.log(editor.getValue());
+      update_section(editor.getValue(), "about");
+      const storage = window.localStorage.setItem("code", editor.getValue());
+    });
+  </script>
+</html>

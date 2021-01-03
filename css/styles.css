@@ -1,0 +1,95 @@
+/* nav */
+.neosite-nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+.neosite-nav ul li {
+  float: left;
+}
+
+.neosite-nav ul li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.neosite-nav ul li a:hover {
+  background-color: #111;
+}
+
+/*hightlighter for elements*/
+.neo-highlighter {
+  background: red;
+}
+
+/* CODE EDITOR CONTAINER */
+.editor-snippets-container {
+  display:grid;
+  grid-template-rows: 25px 1fr 1fr;
+  grid-template-areas: 
+  "toolbar toolbar toolbar toolbar toolbar"
+  "editor editor editor editor editor"
+  "editor editor editor editor editor";
+  bottom: 0px;
+  left:0px;
+  position: fixed;
+  width: 100%;
+  height: 200px;
+}
+
+/* DRAGGABLE STYLES */
+.editor-snippets-container:after {
+  content: " ";
+  background-color: #2F3129;
+  position: absolute;
+  top:0;
+  width: 100%;
+  height: 4px;
+  cursor: n-resize;
+  
+ }
+
+.editor-toolbar{
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  grid-area: toolbar;
+  padding:0px 0px 0px 40px;
+  margin: 0px;
+  background-color: #2F3129;
+}
+
+.editor-toolbar li button {
+  margin-right:20px;
+  width:100%;
+  border:none;
+  padding:2px 8px 2px 8px;
+  margin:0px;
+  background-color:#2F3129;
+  color: rgb(194, 190, 190)
+}
+.editor-toolbar li button:hover{
+  background-color: #56584d;
+}
+
+.snippets {
+  /* overflow-y: scroll; */
+  grid-area: snippets;
+}
+
+.pane-container{
+  grid-area: editor;
+  height: 100%;
+}
+
+/* editor */
+#editor {
+  height: 100%;
+  width: auto;
+}
